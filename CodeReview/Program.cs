@@ -2,10 +2,9 @@
 
 class Program
 {
-    List<Desenvolvedor> desenvolvedores = new();
-
     public static void Main(string[] args)
     {
+        List<Desenvolvedor> desenvolvedores = new();
         string opcaoSelecionada;
 
         do
@@ -13,9 +12,7 @@ class Program
             Console.Clear();
             opcaoSelecionada = ExibirMenu();
         }
-        while (!InputValido(opcaoSelecionada));
-
-        Console.Clear();
+        while (!InputTextoValido(opcaoSelecionada));
 
         switch (opcaoSelecionada)
         {
@@ -24,6 +21,9 @@ class Program
                 desenvolvedores.Add(desenvolvedor);
                 break;
         }
+
+        Console.Clear();
+        ExibirMenu();
     }
 
     private static string ExibirMenu()
@@ -46,36 +46,43 @@ class Program
         Console.WriteLine("3 - Tarefa 3");
     }
 
-    private static bool InputValido(string opcaoSelecionada)
+    private static bool InputTextoValido(string opcaoSelecionada)
     {
         bool inputValido = opcaoSelecionada is "" ? false : true;
 
-        if (inputValido)
-        {
-            Console.WriteLine("Entrada válida!");
-            Thread.Sleep(1000);
-        }
-        else
+        if (!inputValido)
         {
             Console.WriteLine("Entrada inválida, tente novamente...");
             Thread.Sleep(1000);
         }
 
+        Console.Clear();
         return inputValido;
     }
 
     private static Desenvolvedor CriarDesenvolvedor()
     {
-        Console.WriteLine("======== CRIAR DESENVOLVEDOR ========");
+        Console.WriteLine("===== CRIAR DESENVOLVEDOR =====");
 
-        Console.WriteLine("Digite o nome do desenvolvedor: ");
-        string nome = Console.ReadLine();
+        string nome;
+        string email;
 
-        Console.WriteLine("Digite o e-mail do desenvolvedor: ");
-        string email = Console.ReadLine();
+        do
+        {
+            Console.WriteLine("Digite o nome do desenvolvedor: ");
+            nome = Console.ReadLine();
+        }
+        while (!InputTextoValido(nome));
 
+        do
+        {
+            Console.WriteLine("Digite o e-mail do desenvolvedor: ");
+            email = Console.ReadLine();
+        }
+        while (!InputTextoValido(email));
+
+        Console.WriteLine("Desenvolvedor cadastrado com sucesso!");
         return new Desenvolvedor(nome, email);
-        
     }
 }
 
