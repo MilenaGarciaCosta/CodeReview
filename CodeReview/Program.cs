@@ -2,6 +2,8 @@
 
 class Program
 {
+    List<Desenvolvedor> desenvolvedores = new();
+
     public static void Main(string[] args)
     {
         string opcaoSelecionada;
@@ -13,10 +15,13 @@ class Program
         }
         while (!InputValido(opcaoSelecionada));
 
+        Console.Clear();
+
         switch (opcaoSelecionada)
         {
             case "1":
-                //CriarSolicitacao();
+                Desenvolvedor desenvolvedor = CriarDesenvolvedor();
+                desenvolvedores.Add(desenvolvedor);
                 break;
         }
     }
@@ -36,7 +41,7 @@ class Program
 
     private static void ExibirOpcoesMenu()
     {
-        Console.WriteLine("1 - Criar solicitacao");
+        Console.WriteLine("1 - Cadastrar desenvolvedor");
         Console.WriteLine("2 - Tarefa 2");
         Console.WriteLine("3 - Tarefa 3");
     }
@@ -59,9 +64,18 @@ class Program
         return inputValido;
     }
 
-    private void CriarSolicitacao()
+    private static Desenvolvedor CriarDesenvolvedor()
     {
-        Console.WriteLine();
+        Console.WriteLine("======== CRIAR DESENVOLVEDOR ========");
+
+        Console.WriteLine("Digite o nome do desenvolvedor: ");
+        string nome = Console.ReadLine();
+
+        Console.WriteLine("Digite o e-mail do desenvolvedor: ");
+        string email = Console.ReadLine();
+
+        return new Desenvolvedor(nome, email);
+        
     }
 }
 

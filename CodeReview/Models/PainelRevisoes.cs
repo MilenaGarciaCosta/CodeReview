@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace CodeReview.Models;
+﻿namespace CodeReview.Models;
 
 public class PainelRevisoes<Revisao>
 {
