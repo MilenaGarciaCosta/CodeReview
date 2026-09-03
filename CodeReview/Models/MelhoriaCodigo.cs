@@ -2,5 +2,7 @@
 
 public class MelhoriaCodigo : SolicitacaoMudanca
 {
-    public string Teste { get; set; }
+    public MelhoriaCodigo(string titulo, HashSet<string> etiquetas) : base(titulo, etiquetas)
+    {
+    }
 }
